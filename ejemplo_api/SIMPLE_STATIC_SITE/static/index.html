@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Boot tutorial</title>
+</head>
+<body>
+    <h1>Probando Spring Boot</h1>
+    <h2>Los lenguajes guardados son:</h2>
+    <ul id="lenguajes"></ul>
+    <script>
+        fetch('http://localhost:8080/lenguaje')
+            .then(response => response.json())
+            .then(lenguajes => {
+                const lenguajesH3 = document.getElementById('lenguajes');
+                lenguajes.forEach(someLenguaje => {
+                    const li = document.createElement("li");
+                    li.appendChild(document.createTextNode(
+                        `Nombre: ${someLenguaje.nombre}`
+                    ));
+                    lenguajesH3.appendChild(li);
+                    
+                });
+            })
+    </script>
+</body>
+</html>
